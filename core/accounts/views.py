@@ -1,6 +1,5 @@
 from django.shortcuts import render , redirect
 from .models import User , UserManager
-from django.views.generic.edit import CreateView
 from django.views.generic import View
 from django.contrib.auth import authenticate, login 
 

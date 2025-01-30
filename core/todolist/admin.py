@@ -4,7 +4,7 @@ from .models import Task
 
 class TaskAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
-    list_display = ('user' , 'title', 'completed')
+    list_display = ('user' , 'title', 'completed' , 'created_date')
     list_filter = ('user',)
     search_fields = ('user',)
 
