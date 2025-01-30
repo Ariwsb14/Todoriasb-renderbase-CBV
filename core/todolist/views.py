@@ -2,10 +2,10 @@ from django.shortcuts import render , redirect
 from .models import Task
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView , DeleteView , UpdateView
-from django.views.generic import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 #task list
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin,ListView):
     model = Task
     template_name = 'todolist/index.html'
     context_object_name = 'tasks'
@@ -16,7 +16,7 @@ class TaskListView(ListView):
         return context
 
 # creating a task
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin,CreateView):
     model = Task
     template_name = 'todolist/index.html'
     fields = ('title',)
@@ -26,12 +26,12 @@ class TaskCreateView(CreateView):
         return super().form_valid(form)
 
 #delete a task
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin,DeleteView):
     model = Task
     success_url = '/'
 
 #make status of in progress task to comleted status
-class TaskCompleteView(UpdateView):
+class TaskCompleteView(LoginRequiredMixin,UpdateView):
     model = Task
     template_name = 'todolist/index.html'
     fields = ('completed',)
@@ -41,7 +41,7 @@ class TaskCompleteView(UpdateView):
         return super().form_valid(form)
 
 #reset a finished task
-class TaskResetView(UpdateView):
+class TaskResetView(LoginRequiredMixin,UpdateView):
     model = Task
     template_name = 'todolist/index.html'
     fields = ('completed',)
@@ -51,7 +51,7 @@ class TaskResetView(UpdateView):
         return super().form_valid(form)
 
 #edit the title of a task
-class TaskEditView(UpdateView):
+class TaskEditView(LoginRequiredMixin,UpdateView):
     model = Task
     template_name = 'todolist/edit.html'
     fields = ('title',)
