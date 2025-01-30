@@ -1,6 +1,7 @@
 from django.urls import path 
-
-app_name = 'blog'
+from .views import *
+app_name = 'todolist'
 urlpatterns = [
-
+    path('',TaskListView.as_view(),name='tasklist')
+    
 ]

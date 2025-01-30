@@ -52,8 +52,8 @@ body{
     bottom: -80px;
 }
 form{
-    height: 665px;
-    width: 430px;
+    height: 560px;
+    width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -140,18 +140,18 @@ button{
         <div class="shape"></div> 
         <div class="shape"></div>
     </div>
-    <form>
+    <form method="post">
+        {% csrf_token %}
         <h3>Login Here</h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+        <label for="email">Username</label>
+        <input type="text" name="email" placeholder="Email or Phone" id="username">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-        <label for="password">Firstname</label>
-        <input type="password" placeholder="firstname" id="password">
-        <label for="password">Lastname</label>
-        <input type="password" placeholder="lastname" id="password">
+        <input type="password" name="password1" placeholder="Password" id="password">
+        <label for="password">confirm your password</label>
+        <input type="password" name="password2" placeholder="Password confirmation" id="password">
+    
 
         <button>Log In</button>
         
